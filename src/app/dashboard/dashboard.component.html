@@ -1,10 +1,19 @@
-<div class="container">
+<div *ngIf="page == 0" class="container">
   <div class="jumbotron">
     <h1>
       <img src=",,/../assets/images/cup-clipart-hot-cup-7.png" alt="Coffee Cup" style="width:75px;height:75px;">
       Coffee or Nap
     </h1> 
     <p>A DSS to help you make that difficult decision: Drink coffee or just take a nap?</p>
-    <button type="button" class="btn btn-default btn-lg">Begin</button>
+    <button type="button" (click)="next()" class="btn btn-default btn-lg">Begin</button>
+  </div>
+</div>
+
+<div *ngIf="page == 1" class="container">
+  <div class="jumbotron">
+    <h1>
+      Happy now?
+    </h1>
+    <button type="button" (click)="previous()" class="btn btn-default btn-sm">Previous</button>
   </div>
 </div>
