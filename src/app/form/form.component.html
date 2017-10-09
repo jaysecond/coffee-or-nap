@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2>
+      Question {{ page + 1 }}: {{ q.question }}
+    </h2>
+    <ul *ngFor="let opt of q.options">
+      <button type="button" class="btn btn-lg">
+        {{ opt.option }}
+      </button>
+    </ul>
+  </div>
+  <ul class="pager">
+    <li class="previous">
+      <button type="button" class="btn" style="float:left" (click)="previous()">
+        Previous
+      </button>
+    </li>
+    <li class="next">
+      <button type="button" class="btn" style="float:right" (click)="next()">
+        Next
+      </button>
+    </li>
+  </ul>
+</div>

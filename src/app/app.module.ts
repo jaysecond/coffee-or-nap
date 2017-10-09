@@ -8,12 +8,17 @@ import { AppRoutingModule }     from './app.routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FormComponent } from './form/form.component';
+import { ResultsComponent } from './results/results.component';
+import { QuestionService } from './form/question.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    FormComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +26,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

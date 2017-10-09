@@ -1,19 +1,14 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {
-  page = 0;
+  constructor(private router: Router) { }
 
-  public next = () => {
-    this.page++;
-    return this.page;
+  public begin = () => {
+    this.router.navigate(['/form']);
   }
-
-  public previous = () => {
-    this.page--;
-    return this.page;
-  }  
 }
