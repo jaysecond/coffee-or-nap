@@ -25,12 +25,12 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.page=0;
+    this.page = 0;
     this.getQuestions();
   }
 
   public next = () => {
-    if( this.page+1 < this.questions.length ) {
+    if ( this.page + 1 < this.questions.length ) {
       this.page++;
       this.q = this.questions[this.page];
       return this.page, this.q;
@@ -39,8 +39,8 @@ export class FormComponent implements OnInit {
   }
 
   public previous = () => {
-    if( this.page-1 > 0 ) {
-      this.page--
+    if ( this.page - 1 >= 0 ) {
+      this.page--;
       this.q = this.questions[this.page];
       return this.page, this.q;
     }
