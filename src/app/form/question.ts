@@ -4,6 +4,7 @@ export class Options {
 };
 
 export class Question {
+    id: number;
     question: string;
     options: Options[];
 };
