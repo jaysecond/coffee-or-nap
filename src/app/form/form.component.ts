@@ -13,10 +13,11 @@ export class FormComponent implements OnInit {
     private router: Router,
     private questionService: QuestionService
   ) { }
-  
+
   page: number;
   questions: Question[];
   q: Question;
+  history: {};
 
   getQuestions(): void {
     this.questionService.getQuestions()
@@ -29,9 +30,14 @@ export class FormComponent implements OnInit {
     this.getQuestions();
   }
 
-  public next = () => {
-    if ( this.page + 1 < this.questions.length ) {
-      this.page++;
+  public chooseOption = (nextQ) => {
+    /* TODO: Add chosen option to a history storage variable */
+    this.next(nextQ);
+  }
+
+  public next = (nextQ) => {
+    this.page = nextQ;
+    if ( this.page < 7 ) {
       this.q = this.questions[this.page];
       return this.page, this.q;
     }
