@@ -4,7 +4,7 @@
       {{ q.question }}
     </h2>
     <ul *ngFor="let opt of q.options">
-      <button type="button" class="btn btn-lg" (click)="chooseOption(opt.next)">
+      <button type="button" class="btn btn-lg" (click)="chooseOption(page, opt.next)">
         {{ opt.option }}
       </button>
     </ul>

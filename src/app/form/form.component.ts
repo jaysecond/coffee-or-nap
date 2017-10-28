@@ -17,7 +17,7 @@ export class FormComponent implements OnInit {
   page: number;
   questions: Question[];
   q: Question;
-  history: {};
+  history: Array<number>;
 
   getQuestions(): void {
     this.questionService.getQuestions()
@@ -28,10 +28,11 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.page = 0;
     this.getQuestions();
+    this.history = new Array(7);
   }
 
-  public chooseOption = (nextQ) => {
-    /* TODO: Add chosen option to a history storage variable */
+  public chooseOption = (currentPage, nextQ) => {
+    this.history.push(currentPage);
     this.next(nextQ);
   }
 
@@ -46,7 +47,7 @@ export class FormComponent implements OnInit {
 
   public previous = () => {
     if ( this.page - 1 >= 0 ) {
-      this.page--;
+      this.page = this.history.pop();
       this.q = this.questions[this.page];
       return this.page, this.q;
     }
