@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormComponent } from './form/form.component';
 import { ResultsComponent } from './results/results.component';
 import { QuestionService } from './form/question.service';
+import { ResultsService } from './results/results.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { QuestionService } from './form/question.service';
     FormsModule,
     HttpModule
   ],
-  providers: [QuestionService],
+  providers: [QuestionService, ResultsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
