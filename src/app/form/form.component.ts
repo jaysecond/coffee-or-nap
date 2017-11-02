@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Question, Options } from './question';
 import { QuestionService } from './question.service';
 
+import { ResultsService } from '../results/results.service';
+
 @Component({
   selector: 'form',
   templateUrl: './form.component.html',
@@ -11,12 +13,14 @@ import { QuestionService } from './question.service';
 export class FormComponent implements OnInit {
   constructor(
     private router: Router,
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    private resultsService: ResultsService
   ) { }
-  
+
   page: number;
   questions: Question[];
   q: Question;
+  history: Array<number>;
 
   getQuestions(): void {
     this.questionService.getQuestions()
@@ -27,20 +31,27 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.page = 0;
     this.getQuestions();
+    this.history = new Array(7);
   }
 
-  public next = () => {
-    if ( this.page + 1 < this.questions.length ) {
-      this.page++;
+  public chooseOption = (currentPage, nextQ) => {
+    this.history.push(currentPage);
+    this.next(nextQ);
+  }
+
+  public next = (nextQ) => {
+    this.page = nextQ;
+    if ( this.page < 7 ) {
       this.q = this.questions[this.page];
       return this.page, this.q;
     }
+    this.resultsService.setResults(this.page);
     this.router.navigate(['/results']);
   }
 
   public previous = () => {
     if ( this.page - 1 >= 0 ) {
-      this.page--;
+      this.page = this.history.pop();
       this.q = this.questions[this.page];
       return this.page, this.q;
     }
