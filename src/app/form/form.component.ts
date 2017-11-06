@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Question, Options } from './question';
 import { QuestionService } from './question.service';
 
+import { ResultsService } from '../results/results.service';
+
 @Component({
   selector: 'form',
   templateUrl: './form.component.html',
@@ -11,7 +13,8 @@ import { QuestionService } from './question.service';
 export class FormComponent implements OnInit {
   constructor(
     private router: Router,
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    private resultsService: ResultsService
   ) { }
 
   page: number;
@@ -42,6 +45,7 @@ export class FormComponent implements OnInit {
       this.q = this.questions[this.page];
       return this.page, this.q;
     }
+    this.resultsService.setResults(this.page);
     this.router.navigate(['/results']);
   }
 
