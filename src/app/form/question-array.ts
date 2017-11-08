@@ -8,7 +8,7 @@ export const QUESTIONS: Question[] = [
             { option: "0 hours", next: 1 },
             { option: "Less than 4 hours", next: 1 },
             { option: "4-7 hours", next: 3 },
-            { option: "7 or more hours", next: 3 }
+            { option: "More than 7 hours", next: 3 }
         ]
     },
     {
@@ -16,8 +16,8 @@ export const QUESTIONS: Question[] = [
         question: "When is your next activity?",
         options: [
             { option: "Right now", next: 2 },
-            { option: "In less than 30 minutes", next: 9 },
-            { option: "In more than 30 mins", next: 7 }
+            { option: "Less than 30 minutes", next: 9 },
+            { option: "More than 30 mins", next: 7 }
         ]
     },
     {
